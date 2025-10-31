@@ -188,3 +188,16 @@
     letter-spacing: var(--tracking-normal);
   }
 }
+
+@layer utilities {
+  .bg-grid {
+    @apply absolute inset-0 opacity-20;
+    background-image: linear-gradient(to right,var(--foreground) 1px, transparent 1px),linear-gradient(to bottom,var(--foreground) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    mask-image: radial-gradient(
+      ellipse 60% 50% at 50% 0%,
+      #000 70%,
+      transparent 110%
+    );
+  }
+}
