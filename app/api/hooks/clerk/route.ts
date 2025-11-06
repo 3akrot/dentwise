@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
               }
             })
         }
-        catch (e){
+        catch (e:any){
           console.log(e)
           return new Response("Error Inserting in db" + e.message , { status:400 })
         }
