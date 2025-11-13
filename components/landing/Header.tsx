@@ -53,7 +53,7 @@ export const Header = () => {
         <SheetContent side="right" className="w-64  p-4">
           <SheetTitle>Navigation</SheetTitle>
           <div className="flex h-full flex-col   justify-between">
-            <nav className=" space-y-5 pt-4">
+            <nav className=" space-y-5 pt-4 mb-11">
               {(Object.keys(Links) as LinkKey[]).map((linkName,index)=>(
                  <a className=" block" key={index} href={Links[linkName]}>{linkName}</a>
               ))}
