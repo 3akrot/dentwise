@@ -14,8 +14,8 @@ import { usePathname } from "next/navigation";
 const Links = {
   "Dashboard":{href:"#",icon:<Home/>},
   "Appoinments":{href:"#",icon:<Calendar/>},
-  "Voice":{href:"#",icon:<Mic/>},
-  "Pro":{href:"#",icon:<Crown/>}
+  "Voice":{href:"/voice",icon:<Mic/>},
+  "Pro":{href:"/pro",icon:<Crown/>}
 } as const
 type LinkKey = keyof typeof Links
 
@@ -31,7 +31,7 @@ export const Header = () => {
         <nav className="hidden md:block">
           <ul className="flex gap-10 text-sm">
             {(Object.keys(Links) as LinkKey[]).map((linkName,index)=>(
-              <div key={index} className={pathName === `/${linkName}` ? "text-bold flex items-center gap-3" : "flex items-center gap-3"} >
+              <div key={index} className={pathName === `${Links[linkName].href}` ? "font-extrabold scale-120 border-1 border-muted px-2 py-1 rounded-2xl flex items-center gap-3" : "flex items-center gap-3"} >
                 {Links[linkName].icon}
                 <a  key={index} href={Links[linkName].href}>{linkName}</a>
               </div>
