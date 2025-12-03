@@ -40,7 +40,8 @@ export function CallSection() {
     });
 
     vapiInstance.on('message', (message: { type: string, role: string, transcript: string }) => {
-      if (message.type === 'transcript') {
+    
+      if (message.type === 'transcript' && !isSpeaking) {
         setTranscript(prev => [...prev, {
           role: message.role,
           text: message.transcript

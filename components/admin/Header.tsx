@@ -12,8 +12,8 @@ import { Calendar, Crown, Home, Mic } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const Links = {
-  "Dashboard":{href:"#",icon:<Home/>},
-  "Appoinments":{href:"#",icon:<Calendar/>},
+  "Dashboard":{href:"/dashboard",icon:<Home/>},
+  "Appoinments":{href:"/appoinments",icon:<Calendar/>},
   "Voice":{href:"/voice",icon:<Mic/>},
   "Pro":{href:"/pro",icon:<Crown/>}
 } as const
