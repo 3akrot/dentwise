@@ -21,6 +21,9 @@ function VapiWidget() {
   useEffect(() => {
     if (messageContainerRef.current) {
       messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+      messageContainerRef.current.scrollTo({
+        
+      })
     }
   }, [messages]);
 

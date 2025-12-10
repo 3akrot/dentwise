@@ -1,6 +1,5 @@
 "use client";
 
-import { AppointmentConfirmationModal } from "@/components/appointments/AppointmentConfirmationModal";
 import BookingConfirmationStep from "@/components/appointments/BookingConfirmationStep";
 import DoctorSelectionStep from "@/components/appointments/DoctorSelectionStep";
 import ProgressSteps from "@/components/appointments/ProgressSteps";
@@ -138,18 +137,6 @@ function AppointmentsPage() {
             onConfirm={handleBookAppointment}
           />
         )}
-        {bookedAppointment && (
-        <AppointmentConfirmationModal
-          open={showConfirmationModal}
-          onOpenChange={setShowConfirmationModal}
-          appointmentDetails={{
-            doctorName: bookedAppointment.doctorName,
-            appointmentDate: format(new Date(bookedAppointment.date), "EEEE, MMMM d, yyyy"),
-            appointmentTime: bookedAppointment.time,
-            userEmail: bookedAppointment.patientEmail,
-          }}
-        />
-      )}
       </div>
 
       {/* SHOW EXISTING APPOINTMENTS FOR THE CURRENT USER */}
