@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PhoneFormatter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">junit</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">PhoneFormatter.java</span></div><h1>PhoneFormatter.java</h1><pre class="source lang-java linenums">package com.example;
+
+/**
+ * Phone number formatter for Egyptian phone numbers.
+ * Ported from TypeScript: src/lib/utils.ts formatPhoneNumber function.
+ * 
+ * Control Flow Graph has 5 independent paths based on input length.
+ */
+<span class="nc" id="L9">public class PhoneFormatter {</span>
+
+    /**
+     * Formats a phone number with Egyptian country code (+2).
+     * 
+     * @param phonenumber The raw phone number input (may contain non-digits)
+     * @return Formatted phone number string
+     * 
+     *         Path 1: length == 0 → returns &quot;&quot;
+     *         Path 2: length &lt;= 3 → returns &quot;(+2) XXX&quot;
+     *         Path 3: length &lt;= 6 → returns &quot;(+2) XXX XXX&quot;
+     *         Path 4: length &lt;= 9 → returns &quot;(+2) XXX XXX XXX&quot;
+     *         Path 5: length &gt; 9 → returns &quot;(+2) XXX XXX XXX XX&quot;
+     */
+    public static String formatPhoneNumber(String phonenumber) {
+        // Node 1: Remove all non-digits
+<span class="fc" id="L25">        phonenumber = phonenumber.replaceAll(&quot;[^0-9]&quot;, &quot;&quot;).trim();</span>
+
+        // Node 2: Decision - length == 0 (Path 1)
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (phonenumber.length() == 0) {</span>
+<span class="fc" id="L29">            return &quot;&quot;;</span>
+        }
+
+        // Node 4: Decision - length &lt;= 3 (Path 2)
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (phonenumber.length() &lt;= 3) {</span>
+<span class="fc" id="L34">            return &quot;(+2) &quot; + phonenumber;</span>
+        }
+
+        // Node 6: Decision - length &lt;= 6 (Path 3)
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (phonenumber.length() &lt;= 6) {</span>
+<span class="fc" id="L39">            return &quot;(+2) &quot; + phonenumber.substring(0, 3) + &quot; &quot; + phonenumber.substring(3);</span>
+        }
+
+        // Node 8: Decision - length &lt;= 9 (Path 4)
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (phonenumber.length() &lt;= 9) {</span>
+<span class="fc" id="L44">            return &quot;(+2) &quot; + phonenumber.substring(0, 3) + &quot; &quot; +</span>
+<span class="fc" id="L45">                    phonenumber.substring(3, 6) + &quot; &quot; + phonenumber.substring(6);</span>
+        }
+
+        // Node 10: Default return - length &gt; 9 (Path 5)
+<span class="fc" id="L49">        return &quot;(+2) &quot; + phonenumber.substring(0, 3) + &quot; &quot; +</span>
+<span class="fc" id="L50">                phonenumber.substring(3, 6) + &quot; &quot; +</span>
+<span class="fc" id="L51">                phonenumber.substring(6, 9) + &quot; &quot; +</span>
+<span class="fc" id="L52">                phonenumber.substring(9, Math.min(11, phonenumber.length()));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
